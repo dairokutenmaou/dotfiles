@@ -54,10 +54,49 @@ set wrapscan
 "コマンドラインモードでのファイル名補完
 set wildmenu wildmode=list:longest,full
 
-"------
+"-------------
+"プラグイン管理
+"-------------
+set nocompatible
+filetype plugin indent off
+
+if has('vim_starting')
+  set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim/
+	  call neobundle#rc(expand('~/dotfiles/.vim/bundle/'))
+		endif
+
+		call neobundle#begin(expand('~/dotfiles/.vim/bundle/'))
+
+		"NeoBundleをNeobundl自身で管理する
+		NeoBundleFetch 'Shougo/neobundle.vim'
+
+		"読み込むプラグインの指定
+		"##カラースキーム##
+		NeoBundle 'nanotech/jellybeans.vim'
+		NeoBundle 'w0ng/vim-hybrid'
+		NeoBundle 'vim-scripts/twilight'
+		NeoBundle 'jonathanfilip/vim-lucius'
+		NeoBundle 'jpo/vim-railscasts-theme'
+		NeoBundle 'altercation/vim-colors-solarized'
+		NeoBundle 'vim-scripts/Wombat'
+		NeoBundle 'tomasr/molokai'
+		NeoBundle 'vim-scripts/rdark'
+
+		" カラースキーム一覧表示に Unite.vim を使う
+		NeoBundle 'Shougo/unite.vim'
+		NeoBundle 'ujihisa/unite-colorscheme'
+
+		"##コマンドライン##
+		NeoBundle 'itchyny/lightline.vim'
+
+		 call neobundle#end()
+
+	filetype plugin indent on
 "その他
 "------
 "vi互換を切る
 set nocompatible
 "履歴保存数
 set history=10000
+"プラグインの自動更新
+NeoBundleCheck
