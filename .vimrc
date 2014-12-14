@@ -1,3 +1,72 @@
+"-------------
+"プラグイン管理
+"-------------
+set nocompatible
+filetype plugin indent off
+
+if has('vim_starting')
+  set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim/
+	  call neobundle#rc(expand('~/dotfiles/.vim/bundle/'))
+		endif
+
+		call neobundle#begin(expand('~/dotfiles/.vim/bundle/'))
+
+		"NeoBundleをNeobundl自身で管理する
+		NeoBundleFetch 'Shougo/neobundle.vim'
+
+		"読み込むプラグインの指定
+		NeoBundle "https://github.com/thinca/vim-quickrun"
+
+		NeoBundle "Shougo/neocomplete.vim"
+
+		NeoBundle "t9md/vim-quickhl"
+		" <Space>m でカーソル下の単語、もしくは選択した範囲のハイライトを行う
+		" " 再度 <Space>m を行うとカーソル下のハイライトを解除する
+		" " これは複数の単語のハイライトを行う事もできる
+		" " <Space>M で全てのハイライトを解除する
+		nmap <Space>m <Plug>(quickhl-manual-this)
+		xmap <Space>m <Plug>(quickhl-manual-this)
+		nmap <Space>M <Plug>(quickhl-manual-reset)
+		xmap <Space>M <Plug>(quickhl-manual-reset)
+
+		NeoBundle "tyru/caw.vim"
+		"コメントアウトを切り替えるマッピング
+		"\c でカーソル行をコメントアウト
+		"再度 \c でコメントアウトを解除
+		"選択してから複数行の \c も可能
+		nmap \c <Plug>(caw:I:toggle)
+		vmap \c <Plug>(caw:I:toggle)
+		"\C でコメントアウトの解除
+		nmap \C <Plug>(caw:I:uncomment)
+		vmap \C <Plug>(caw:I:uncomment)
+
+		NeoBundle 'itchyny/lightline.vim'
+		let g:indent_guides_enable_on_vim_startup = 1
+
+		NeoBundle 'https://github.com/nathanaelkane/vim-indent-guides'
+
+		NeoBundle 'scrooloose/nerdtree'
+
+		NeoBundle 'https://github.com/MetalPhaeton/easybracket-vim'
+
+		"##カラースキーム##
+		NeoBundle 'nanotech/jellybeans.vim'
+		NeoBundle 'w0ng/vim-hybrid'
+		NeoBundle 'vim-scripts/twilight'
+		NeoBundle 'jonathanfilip/vim-lucius'
+		NeoBundle 'jpo/vim-railscasts-theme'
+		NeoBundle 'altercation/vim-colors-solarized'
+		NeoBundle 'vim-scripts/Wombat'
+		NeoBundle 'tomasr/molokai'
+		NeoBundle 'vim-scripts/rdark'
+
+		" カラースキーム一覧表示に Unite.vim を使う
+		NeoBundle 'Shougo/unite.vim'
+		NeoBundle 'ujihisa/unite-colorscheme'
+
+
+		call neobundle#end()
+	filetype plugin indent on
 "----
 "表示
 "----
@@ -17,10 +86,6 @@ set cursorline
 set laststatus=2
 "コマンドラインの行数
 set cmdheight=2
-"不可視文字の表示
-set list
-"不可視文字の記号指定
-set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮
 
 "---------
 "編集/入力
@@ -54,44 +119,7 @@ set wrapscan
 "コマンドラインモードでのファイル名補完
 set wildmenu wildmode=list:longest,full
 
-"-------------
-"プラグイン管理
-"-------------
-set nocompatible
-filetype plugin indent off
-
-if has('vim_starting')
-  set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim/
-	  call neobundle#rc(expand('~/dotfiles/.vim/bundle/'))
-		endif
-
-		call neobundle#begin(expand('~/dotfiles/.vim/bundle/'))
-
-		"NeoBundleをNeobundl自身で管理する
-		NeoBundleFetch 'Shougo/neobundle.vim'
-
-		"読み込むプラグインの指定
-		"##カラースキーム##
-		NeoBundle 'nanotech/jellybeans.vim'
-		NeoBundle 'w0ng/vim-hybrid'
-		NeoBundle 'vim-scripts/twilight'
-		NeoBundle 'jonathanfilip/vim-lucius'
-		NeoBundle 'jpo/vim-railscasts-theme'
-		NeoBundle 'altercation/vim-colors-solarized'
-		NeoBundle 'vim-scripts/Wombat'
-		NeoBundle 'tomasr/molokai'
-		NeoBundle 'vim-scripts/rdark'
-
-		" カラースキーム一覧表示に Unite.vim を使う
-		NeoBundle 'Shougo/unite.vim'
-		NeoBundle 'ujihisa/unite-colorscheme'
-
-		"##コマンドライン##
-		NeoBundle 'itchyny/lightline.vim'
-
-		 call neobundle#end()
-
-	filetype plugin indent on
+"-------
 "その他
 "------
 "vi互換を切る
