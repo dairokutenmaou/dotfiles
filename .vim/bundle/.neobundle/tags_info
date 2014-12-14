@@ -5,13 +5,13 @@ jellybeans.vim
 lightline.vim
 molokai
 neobundle.vim
-neocomplete.vim
 nerdtree
 rdark
 twilight
 unite-colorscheme
 unite.vim
 vim-colors-solarized
+vim-fugitive
 vim-hybrid
 vim-indent-guides
 vim-lucius
