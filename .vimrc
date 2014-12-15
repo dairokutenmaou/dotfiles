@@ -15,39 +15,28 @@ if has('vim_starting')
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
 		"読み込むプラグインの指定
-		NeoBundle "https://github.com/thinca/vim-quickrun"
 
-		NeoBundle "Shougo/neocomplete.vim"
-
+		"指定単語のハイライト用プラグイン
 		NeoBundle "t9md/vim-quickhl"
 		" <Space>m でカーソル下の単語、もしくは選択した範囲のハイライトを行う
-		" " 再度 <Space>m を行うとカーソル下のハイライトを解除する
-		" " これは複数の単語のハイライトを行う事もできる
-		" " <Space>M で全てのハイライトを解除する
+		"再度 <Space>m を行うとカーソル下のハイライトを解除するハイライトを解除する
 		nmap <Space>m <Plug>(quickhl-manual-this)
 		xmap <Space>m <Plug>(quickhl-manual-this)
 		nmap <Space>M <Plug>(quickhl-manual-reset)
 		xmap <Space>M <Plug>(quickhl-manual-reset)
 
-		NeoBundle "tyru/caw.vim"
-		"コメントアウトを切り替えるマッピング
-		"\c でカーソル行をコメントアウト
-		"再度 \c でコメントアウトを解除
-		"選択してから複数行の \c も可能
-		nmap \c <Plug>(caw:I:toggle)
-		vmap \c <Plug>(caw:I:toggle)
-		"\C でコメントアウトの解除
-		nmap \C <Plug>(caw:I:uncomment)
-		vmap \C <Plug>(caw:I:uncomment)
+		"コメントアウト用プラグイン
+		NeoBundle "tyru\/caw.vim"
+		"ビジュアルモードで指定してCtrl-kを押してコメントアウト
+		nmap <C-K> <Plug>(caw:i:toggle)
+		vmap <C-K> <Plug>(caw:i:toggle)
 
+		"コマンドラインの上に綺麗な情報ライン表示用プラグイン
 		NeoBundle 'itchyny/lightline.vim'
 		let g:indent_guides_enable_on_vim_startup = 1
-
-		NeoBundle 'https://github.com/nathanaelkane/vim-indent-guides'
-
+	
+		"みんな大好きnerdtree
 		NeoBundle 'scrooloose/nerdtree'
-
-		NeoBundle 'https://github.com/MetalPhaeton/easybracket-vim'
 
 		"##カラースキーム##
 		NeoBundle 'nanotech/jellybeans.vim'
@@ -63,7 +52,6 @@ if has('vim_starting')
 		" カラースキーム一覧表示に Unite.vim を使う
 		NeoBundle 'Shougo/unite.vim'
 		NeoBundle 'ujihisa/unite-colorscheme'
-
 
 		call neobundle#end()
 	filetype plugin indent on
@@ -86,6 +74,11 @@ set cursorline
 set laststatus=2
 "コマンドラインの行数
 set cmdheight=2
+"カラースキームの設定
+colorscheme solarized
+set background=dark
+"カーソルの形状
+set guicursor
 
 "---------
 "編集/入力
@@ -98,6 +91,12 @@ set cindent
 set shiftwidth=2
 "連続した空白に対してtabやbackspaceでカーソルが動く範囲
 set softtabstop=2
+"ideoneっぽい挙動
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap "" ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
 
 "-----------
 "検索/置換

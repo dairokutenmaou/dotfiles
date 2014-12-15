@@ -1,6 +1,5 @@
 Wombat
 caw.vim
-easybracket-vim
 jellybeans.vim
 lightline.vim
 molokai
@@ -11,10 +10,7 @@ twilight
 unite-colorscheme
 unite.vim
 vim-colors-solarized
-vim-fugitive
 vim-hybrid
-vim-indent-guides
 vim-lucius
 vim-quickhl
-vim-quickrun
 vim-railscasts-theme
