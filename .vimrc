@@ -15,12 +15,9 @@ if has('vim_starting')
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
 		"読み込むプラグインの指定
-		NeoBundle 'tpope/vim-fugitive'
-		au FileType gitcommit nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-		au FileType gitcommit inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-		au FileType fugitiveblame nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-
 		NeoBundle "https://github.com/thinca/vim-quickrun"
+
+		NeoBundle "Shougo/neocomplete.vim"
 
 		NeoBundle "t9md/vim-quickhl"
 		" <Space>m でカーソル下の単語、もしくは選択した範囲のハイライトを行う
@@ -101,12 +98,6 @@ set cindent
 set shiftwidth=2
 "連続した空白に対してtabやbackspaceでカーソルが動く範囲
 set softtabstop=2
-"ideoneっぽい設定
-inoremap ( ()<LEFT>
-inoremap [ []<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
 
 "-----------
 "検索/置換
